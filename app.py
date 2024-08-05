@@ -45,10 +45,11 @@ def cadastro():
         return render_template('cadastro.html')
     
     if request.method=='POST':
+        nome = request.form['nome']
         email = request.form['email']
         senha = request.form['senha'] 
         con =  sqlite3.connect('database.db')
-        con.execute('INSERT INTO users (email, password) VALUES (?,?)',(email, senha))
+        con.execute('INSERT INTO users (nome, email, password) VALUES (?,?,?)',(nome,email, senha))
         con.commit()
         con.close()
 

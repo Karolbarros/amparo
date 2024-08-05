@@ -8,10 +8,15 @@
 <div class="vh-100 d-flex flex-column align-items-center justify-content-center">
    <h1 class="fw-bold">Cadastre-se</h1>
    <form method="POST" action="{{url_for('cadastro')}}">
+      <label class="mb-2 fw-bold">Nome</label>
+      <input class="form-control" type="text" id="email" name="nome" placeholder="nome">
+
       <label class="mb-2 fw-bold">Email</label>
       <input class="form-control" type="email" id="email" name="email" placeholder="Email">
+      
       <label class="mt-3 mb-2 fw-bold">Senha</label>
       <input class="form-control id="senha"  type="password" name="senha" placeholder="Senha">
+     
       <button class="btn w-100 mt-3 btn-info fw-bold text-white" type="submit">Cadastrar</button>
    </form>
 </div>
