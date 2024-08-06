@@ -55,3 +55,7 @@ def cadastro():
 
         flash('Cadastrado com sucesso', 'success')
         return redirect(url_for('login'))
+    
+@app.route('/contato')
+def contato():
+    return render_template('contato.html')
