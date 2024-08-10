@@ -8,15 +8,15 @@ nav{
 }
 .nav-bar{
     display: flex;
-    padding: 18px;
+    padding: 1.125rem;
     width: 100%;
-    height: 70px;
+    height: 4.375rem;
     
 }
 
 .botoes{
     display: flex;
-    gap: 15px;
+    gap: .9375rem;
     margin-left: 50rem;
     width: 100%;
     height: 100%;
@@ -39,7 +39,7 @@ nav{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 6.25rem;
     
 }
 .forms{
@@ -48,14 +48,14 @@ nav{
     display: flex;
     flex-direction: column;
     background: #3D7692;
-    padding: 50px;
-    width: 360px;
+    padding: 3.125rem;
+    width: 22.5rem;
     border-radius: 30px;
 }
 .botaocadlog{
-    margin-top: 25px;
-    height: 50px;
-    width: 260px;
+    margin-top: 1.5625rem;
+    height: 3.125rem;
+    width: 16.25rem;
     color: #fff;
     background-color: #539cc1;
     font-family: sora, sans-serif;
@@ -68,5 +68,5 @@ nav{
 .login{
     display: flex;
     justify-content: center;
-    margin-top: 150px;
+    margin-top: 9.375rem;
 }
