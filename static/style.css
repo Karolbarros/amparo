@@ -72,3 +72,7 @@ nav{
     justify-content: center;
     margin-top: 9.375rem;
 }
+
+.carousel{
+    height: 400px;
+}
