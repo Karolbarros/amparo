@@ -1,6 +1,11 @@
 h1, h2, h3, h4, h5, h6, a{
     font-family: sora, sans-serif;
 }
+
+p{
+    font-family: inter, sans-serif;
+}
+
 nav{
     font-family: sora, sans-serif;
     border-bottom: 1px solid #315E75;
@@ -74,5 +79,34 @@ nav{
 }
 
 .carousel{
-    height: 400px;
+    height: 25rem;
+}
+
+.carousel-item img{
+    width: 100%;
+    height: 25rem;
+}
+
+.secao-dois{
+    display: flex;
+    flex-direction: column;
+    margin: 7.25rem;
+    gap: 6rem;
+    text-align: center;
+}
+
+.p-img1, .p-img2{
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.p-img1 p, .p-img2 p{
+    max-width: 34.375rem;
+    max-height: 16.3125rem;
+}
+
+.p-img1 img, .p-img2 img{
+    width: 37.25rem;
+    height: 18.75rem;
 }
