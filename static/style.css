@@ -110,3 +110,20 @@ nav{
     width: 37.25rem;
     height: 18.75rem;
 }
+
+section{
+    padding: 80px 13% 70px;
+}
+.footer{
+    display: flex;
+    justify-content: space-around;
+    gap: 3.5rem;
+    background:#126C86;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.footer-contet, li{
+    list-style: none;
+    justify-content: center;  
+}
