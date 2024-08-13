@@ -123,7 +123,34 @@ section{
     right: 0;
     bottom: 0;
 }
-.footer-contet, li{
+.footer-content li{
     list-style: none;
     justify-content: center;  
+}
+
+.footer-content{
+    color: #fff;
+
+}
+
+.footer-content a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.rede-sociais .redes{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rede-sociais .redes li{
+    display: flex;
+    gap: 10px;
+    justify-content: left;
+}
+
+.redes li a img{
+    color: #fff;
+    margin-right: 10px;
 }
