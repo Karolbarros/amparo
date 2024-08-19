@@ -2,7 +2,7 @@ from flask import Flask, render_template, flash, redirect, request, url_for
 import sqlite3
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "Karol1004"
+app.config['SECRET_KEY'] = "amparo1004"
 
 @app.route('/')
 def index():
@@ -59,3 +59,11 @@ def cadastro():
 @app.route('/contato')
 def contato():
     return render_template('contato.html')
+
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
+
+@app.route('/doencas')
+def doecas():
+    return render_template('doencas.html')
