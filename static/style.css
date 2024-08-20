@@ -21,7 +21,7 @@ nav{
 }
 
 .nav-bar .btn.btn-outline-primary{
-    width: 100px;
+    width: 8.0625rem;
 }
 
 .botoes{
@@ -46,7 +46,7 @@ nav{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 6.25rem;
+    margin: 6.25rem 0 8rem 0;
     
 }
 .forms{
@@ -75,7 +75,7 @@ nav{
 .login{
     display: flex;
     justify-content: center;
-    margin-top: 9.375rem;
+    margin: 6.25rem 0 8rem 0;
 }
 
 .carousel{
@@ -153,4 +153,29 @@ section{
 .redes li a img{
     color: #fff;
     margin-right: 10px;
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
+    gap: 167px;
+    margin: 2.3125rem 0 9.5625rem 0;
+}
+
+.cards .card{
+    width: 250px;
+    height: 300px;
+    background-color: #1CA2C8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 52px;
+    text-align: center;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.cards .card img{
+    width: 70px;
+    height: 70px;
 }
