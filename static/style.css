@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+h1{
+    font-size: 3.5rem;
+}
+
 p{
     margin: 0;
 }
@@ -99,6 +103,56 @@ footer .footer-lists ul li a:hover {
     text-decoration: none;
 }
 
+.hero {
+    height: 43.625rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.hero h1{
+    width: 31.25rem;
+    height: 16.25rem;
+    margin-right: 25rem;
+}
+
+.hero-image{
+    width: 45rem;
+    height: 43.5625rem;
+    background: linear-gradient(270deg, #B1B1B1 0%, #FFF 100%);
+}
+
+.conteudos{
+    width: 73.125rem;
+    height: 20.875rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7.5rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    margin: 5.625rem 0;
+}
+
+.content-text{
+    width: 31.25rem;
+    height: 20.875rem;
+}
+
+.content-text h3{
+    color: #0A0B0D;
+    font-family: "Sora", sans-serif;
+}
+
+.content-image{
+    width: 31.25rem;
+    height: 20.875rem;
+    background: #D9D9D9;
+}
 
 @media (max-width: 768px) {
     header {

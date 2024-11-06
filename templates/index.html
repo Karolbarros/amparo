@@ -2,56 +2,36 @@
 
 
 {% block conteudo %}
-    <div id="carouselExampleIndicators" class="carousel" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="{{url_for('static', filename='img/rosa.png') }}" class="d-block"alt="Categoria 1">
+    <section class="hero">
+      <h1>Lorem ipsum dolor sit amet</h1>
+      <div class="hero-image"></div>
+    </section>
+    <section class="content">
+      <div class="conteudo">
+        <div class="conteudos">
+          <div class="content-text">
+            <h3>Lorem ipsum dolor</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
-          <div class="carousel-item">
-            <img src="{{url_for('static', filename='img/azul.png') }}" class="d-block" alt="Categoria 2">
-          </div>
-          <div class="carousel-item">
-            <img src="{{url_for('static', filename='img/cinza.png') }}" class="d-block" alt="Categoria 3">
+          <div class="content-image">
           </div>
         </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    <div class="secao-dois">
-      <div class="p-img1">
-        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-        <img src="/static/img/cinza.png" alt="">
+        <div class="conteudos">
+          <div class="content-image">
+          </div>
+          <div class="content-text">
+            <h3>Lorem ipsum dolor</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </div>
+        <div class="conteudos">
+          <div class="content-text">
+            <h3>Lorem ipsum dolor</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+          <div class="content-image">
+          </div>
+        </div>
       </div>
-      <div class="p-img2">
-        <img src="/static/img/cinza.png" alt="">
-        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-      </div>
-    </div>
-    <div class="cards">
-      <div class="card">
-        <img src="/static/img/branco-teste.jpg" alt="">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-      </div>
-      <div class="card">
-        <img src="/static/img/branco-teste.jpg" alt="">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-      </div>
-      <div class="card">
-        <img src="/static/img/branco-teste.jpg" alt="">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-      </div>
-    </div>
+    </section>
 {% endblock %}
