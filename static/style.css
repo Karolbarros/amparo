@@ -148,6 +148,21 @@ footer .footer-lists ul li a:hover {
     font-family: "Sora", sans-serif;
 }
 
+body.forms{
+    background-color: #14141F;
+}
+
+div.cadastro{
+    display: flex;
+    flex-direction: row;
+    max-width: 750px;
+    max-height: 472;
+}
+
+div.logo{
+    
+}
+
 .content-image{
     width: 31.25rem;
     height: 20.875rem;
