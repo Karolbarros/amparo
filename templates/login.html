@@ -10,17 +10,21 @@
 <body class="login">
   <div class="container">
     <div class="login">
-        <div class="forms">
-          <form action="{{url_for('autenticar')}}" method="POST">
-            <h1>Amparo</h1>
-              <label for="email" class="form-label">Email: </label>
-              <input type="text" class="form-control" id="email" name="email" placeholder="Digite seu email">
-              <label for="senha" class="form-label">Senha: </label>
-              <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite sua senha">
-            <button class="botaocadlog" type="submit">Entrar</button>
-          </form>
-        </div>
+      <div class="image-section">
+        <img src="/static/img/libelula.png" alt="Libelula Logo">
+      </div>
+      <div class="forms">
+        <form action="{{url_for('autenticar')}}" method="POST">
+          <h1>AMPARO</h1>
+            <label for="email" class="form-label">Email: </label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="Digite seu email">
+            <label for="senha" class="form-label">Senha: </label>
+            <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite sua senha">
+          <button class="botaocadlog" type="submit">Entrar</button>
+        </form>
+      </div>
     </div>
   </div>
+  
 </body>
 </html>
