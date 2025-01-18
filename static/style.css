@@ -169,6 +169,78 @@ div.logo{
     background: #D9D9D9;
 }
 
+body.login {
+    margin: 0;
+    font-family: "Sora", sans-serif;
+    height: 100%;
+    width: 100%;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.forms h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.form-label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: left;
+    display: block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.botaocadlog {
+    width: 100%;
+    padding: 10px;
+    background-color: #1db76b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botaocadlog:hover {
+    background-color: #159e5c;
+}
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -186,3 +258,4 @@ div.logo{
         margin-top: 0.625rem;
     }
 }
+
