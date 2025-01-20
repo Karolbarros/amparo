@@ -19,7 +19,7 @@ header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     padding: 0.9375rem 8.4375rem;
     background: linear-gradient(180deg, #17A769 0%, #092E41 100%);
     color: #fff;
@@ -159,10 +159,6 @@ div.cadastro{
     max-height: 472;
 }
 
-div.logo{
-    
-}
-
 .content-image{
     width: 31.25rem;
     height: 20.875rem;
@@ -261,6 +257,101 @@ body.login {
     background-color: #000000;
 }
 
+body.sobre {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background: linear-gradient(180deg, #003c30, #007759);
+}
+
+header.sobre {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: linear-gradient(90deg, #003c30, #007759);
+}
+
+header.sobre h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+header.sobre a {
+    color: #d4ffeb;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+section.quem-somos {
+    padding: 40px 20px;
+    text-align: center;
+    background: #fff;
+    color: #003c30;
+}
+
+section.quem-somos h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+section.quem-somos p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section.rede-apoio {
+    padding: 40px 20px;
+    background: linear-gradient(180deg, #005e49, #007759);
+    color: #fff;
+}
+
+section.rede-apoio h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+section.rede-apoio p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section.nosso-objetivo {
+    padding: 40px 20px;
+    background: #fff;
+    color: #003c30;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+section.nosso-objetivo img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+section.nosso-objetivo .text- {
+    max-width: 800px;
+    text-align: center;
+}
+
+section.nosso-objetivo h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+section.nosso-objetivo p {
+    font-size: 18px;
+    line-height: 1.6;
+}
 
 @media (max-width: 768px) {
     header {
@@ -277,6 +368,14 @@ body.login {
     .nav ul li {
         margin-left: 0;
         margin-top: 0.625rem;
+    }
+
+    section.nosso-objetivo {
+        flex-direction: column;
+    }
+
+    section.nosso-objetivo img {
+        margin-bottom: 20px;
     }
 }
 
