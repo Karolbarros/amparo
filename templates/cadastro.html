@@ -7,25 +7,27 @@
     <link rel="stylesheet" href="/static/style.css">
     <title>cadastro</title>
 </head>
-<body class="forms">
-    <div class="cadastro">
-        <div class="logo">
+<body class="cadastro">
+    <div class="container">
+        <div class="cadastro">
+            <div class="forms">
+                <h1 class="fw-bold">Amparo</h1>
+                <form method="POST" action="{{url_for('cadastro')}}">
+                   <label class="mb-2 fw-bold">Nome:</label>
+                   <input class="form-control" type="text" id="email" name="nome" placeholder="nome">
+       
+                   <label class="mb-2 fw-bold">Email:</label>
+                   <input class="form-control" type="email" id="email" name="email" placeholder="Email">
+                   
+                   <label class="mt-3 mb-2 fw-bold">Senha:</label>
+                   <input class="form-control id="senha"  type="password" name="senha" placeholder="Senha">
+                
+                   <button class="botaocadlog" type="submit">Cadastrar</button>
+                </form>
+          </div>
+          <div class="image-section">
             <img src="/static/img/libelula.png" alt="">
-        </div>
-        <div class="forms">
-              <h1 class="fw-bold">Amparo</h1>
-              <form method="POST" action="{{url_for('cadastro')}}">
-                 <label class="mb-2 fw-bold">Nome:</label>
-                 <input class="form-control" type="text" id="email" name="nome" placeholder="nome">
-     
-                 <label class="mb-2 fw-bold">Email:</label>
-                 <input class="form-control" type="email" id="email" name="email" placeholder="Email">
-                 
-                 <label class="mt-3 mb-2 fw-bold">Senha:</label>
-                 <input class="form-control id="senha"  type="password" name="senha" placeholder="Senha">
-              
-                 <button class="botaocadlog" type="submit">Cadastrar</button>
-              </form>
+          </div>
         </div>
      </div>  
 </body>
