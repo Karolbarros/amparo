@@ -1,8 +1,44 @@
-from flask import Flask, render_template, flash, redirect, request, url_for
+from flask import Flask, render_template, flash, Response, redirect, request, url_for
 import sqlite3
+from flask_sqlalchemy import SQLAlchemy
+import json, os
+from flask_login import LoginManager
 
+
+login_manager = LoginManager()
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "amparo1004"
+login_manager.init_app(app)
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(BASE_DIR, 'database.db')}"
+db = SQLAlchemy()
+db.init_app(app)
+
+
+class Usuario(db.Model):
+    __tablename__='usuario'
+    id = db.Column(db.Integer, primary_key = True)
+    nome = db.Column(db.String(100))
+    email = db.Column(db.String(150))
+    senha = db.Column(db.String(250))
+
+class Cuidador(db.Model):
+    __tablename__='cuidador'
+    id = db.Column(db.Integer, primary_key = True)
+    nome = db.Column(db.String(100))
+    email = db.Column(db.String(150))
+    senha = db.Column(db.String(250))
+
+# with app.app_context():
+#   db.drop_all()
+#   db.create_all()
+#   print("Tabelas criadas no banco de dados.")
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Usuario.get(user_id)
 
 @app.route('/')
 def index():
@@ -14,19 +50,25 @@ def login():
 
 @app.route('/autenticar', methods=['POST'])
 def autenticar():
+    tipo = request.form['tipo']
     email = request.form['email']
     senha = request.form['senha']
 
-    con = sqlite3.connect('database.db')
-    cursor = con.cursor()
-    cursor.execute('SELECT * FROM users WHERE email = ?', [email])
-    users = cursor.fetchone()
+    if tipo=='0':
+        us = Usuario.query.filter_by(email=email).first()
+
+    if tipo=='1':
+        us = Cuidador.query.filter_by(email=email).first()
+
+    if(us is None):
+        flash('Login ou senha incorretos', 'danger')
+        return redirect(url_for('login'))
     
-    if(users[1] == senha):
+    if(us.senha == senha):
         flash('Logado com sucesso', 'success')
         return redirect('/')
 
-    if(users[1] != senha):
+    if(us.senha != senha):
         flash('Login ou senha incorretos', 'danger')
         return redirect(url_for('login'))
 
@@ -45,14 +87,21 @@ def cadastro():
         return render_template('cadastro.html')
     
     if request.method=='POST':
+        tipo = request.form['tipo']
         nome = request.form['nome']
         email = request.form['email']
         senha = request.form['senha'] 
-        con =  sqlite3.connect('database.db')
-        con.execute('INSERT INTO users (nome, email, password) VALUES (?,?,?)',(nome,email, senha))
-        con.commit()
-        con.close()
+        
+        if tipo=='0':
+            usuario = Usuario(nome = nome, email = email, senha = senha)
+            db.session.add(usuario)
+  
+        if tipo=='1':
+            cuidador = Cuidador(nome = nome, email = email, senha = senha)
+            db.session.add(cuidador)
 
+        db.session.commit()
+            
         flash('Cadastrado com sucesso', 'success')
         return redirect(url_for('login'))
     
@@ -67,3 +116,5 @@ def faq():
 @app.route('/doencas')
 def doecas():
     return render_template('doencas.html')
+
+app.run(app)
