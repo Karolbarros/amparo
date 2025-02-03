@@ -1,28 +1,63 @@
 {% extends 'base.html' %}
 
 {% block conteudo %}
-<h1>Páginas de Doações para Doenças Crônicas no Brasil</h1>
+<h2>Registrar Pedido de Doação</h2>
+    
+<!-- Formulário de pedido de doação -->
+<form method="POST">
+    <label for="item">Item necessário:</label>
+    <input type="text" id="item" name="item" placeholder="Ex: Medicamento, alimentação" required><br>
 
-    <div class="resource-section">
-        <h2>Organizações e Iniciativas</h2>
-        <p>Abaixo estão algumas organizações que aceitam doações para apoiar pessoas com doenças crônicas:</p>
-        <ul>
-            <li><a href="https://www.abcd.org.br/" target="_blank">ABCD - Associação Brasileira de Diabetes</a> - Apoio e informações sobre diabetes.</li>
-            <li><a href="https://www.fundacaocancer.org.br/" target="_blank">Fundação do Câncer</a> - Contribuições para pesquisas e suporte a pacientes com câncer.</li>
-            <li><a href="https://www.abrale.org.br/" target="_blank">ABRALE - Associação Brasileira de Linfoma e Leucemia</a> - Ajuda a pacientes com câncer hematológico.</li>
-            <li><a href="https://www.abrace.org.br/" target="_blank">ABRACE - Associação Brasileira de Assistência ao Câncer</a> - Apoio a pacientes com câncer e suas famílias.</li>
-            <li><a href="https://www.fundacaoabrigo.org.br/" target="_blank">Fundação Abrigo</a> - Apoio a pessoas com doenças crônicas e suas famílias.</li>
-        </ul>
-    </div>
+    <label for="description">Descrição do pedido:</label>
+    <textarea id="description" name="description" placeholder="Detalhe a necessidade e como a doação ajudará" required></textarea><br>
 
-    <div class="resource-section">
-        <h2>Como Contribuir</h2>
-        <p>Além de doações financeiras, você pode ajudar de outras maneiras:</p>
-        <ul>
-            <li><a href="https://www.voluntariar.org.br/" target="_blank">Voluntariado</a> - Encontre oportunidades de voluntariado em organizações de saúde.</li>
-            <li><a href="https://www.doacoes.org.br/" target="_blank">Plataforma de Doações</a> - Contribua com campanhas de arrecadação de fundos.</li>
-            <li><a href="https://www.campanhasolidaria.org.br/" target="_blank">Campanhas Solidárias</a> - Participe de campanhas que ajudam pessoas com doenças crônicas.</li>
-        </ul>
-    </div>
+    <label for="urgency">Urgência:</label>
+    <select id="urgency" name="urgency" required>
+        <option value="alta">Alta</option>
+        <option value="media">Média</option>
+        <option value="baixa">Baixa</option>
+    </select><br>
+
+    <label for="contact_info">Informações de contato:</label>
+    <input type="text" id="contact_info" name="contact_info" placeholder="Ex: Telefone, email" required><br>
+
+    <button type="submit">Registrar Pedido</button>
+</form>
+
+<h2>Meus Pedidos de Doação</h2>
+<ul>
+    {% for pedido in pedidos %}
+        <li>
+            <strong>{{ pedido.item }}</strong><br>
+            Descrição: {{ pedido.descricao }}<br>
+            Urgência: {{ pedido.urgencia }}<br>
+            Contato: {{ pedido.contato_info }}<br>
+            <hr>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Páginas de Doações para Doenças Crônicas no Brasil</h2>
+<div class="resource-section">
+    <h2>Organizações e Iniciativas</h2>
+    <p>Abaixo estão algumas organizações que aceitam doações para apoiar pessoas com doenças crônicas:</p>
+    <ul>
+        <li><a href="https://www.abcd.org.br/" target="_blank">ABCD - Associação Brasileira de Diabetes</a></li>
+        <li><a href="https://www.fundacaocancer.org.br/" target="_blank">Fundação do Câncer</a></li>
+        <li><a href="https://www.abrale.org.br/" target="_blank">ABRALE - Associação Brasileira de Linfoma e Leucemia</a></li>
+        <li><a href="https://www.abrace.org.br/" target="_blank">ABRACE - Associação Brasileira de Assistência ao Câncer</a></li>
+        <li><a href="https://www.fundacaoabrigo.org.br/" target="_blank">Fundação Abrigo</a></li>
+    </ul>
+</div>
+
+<div class="resource-section">
+    <h2>Como Contribuir</h2>
+    <p>Além de doações financeiras, você pode ajudar de outras maneiras:</p>
+    <ul>
+        <li><a href="https://www.voluntariar.org.br/" target="_blank">Voluntariado</a></li>
+        <li><a href="https://www.doacoes.org.br/" target="_blank">Plataforma de Doações</a></li>
+        <li><a href="https://www.campanhasolidaria.org.br/" target="_blank">Campanhas Solidárias</a></li>
+    </ul>
+</div>
 
 {% endblock %}

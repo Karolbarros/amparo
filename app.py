@@ -4,6 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 import json, os
 from flask_login import LoginManager
 from flask_login import UserMixin, login_user, logout_user, login_required
+from flask_login import current_user
+
 
 login_manager = LoginManager()
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -18,21 +20,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(BASE_DIR, 'dat
 db = SQLAlchemy()
 db.init_app(app)
 
-
-# class Usuario(db.Model):
-#     __tablename__='usuario'
-#     id = db.Column(db.Integer, primary_key = True)
-#     nome = db.Column(db.String(100))
-#     email = db.Column(db.String(150))
-#     senha = db.Column(db.String(250))
-
-# class Cuidador(db.Model):
-#     __tablename__='cuidador'
-#     id = db.Column(db.Integer, primary_key = True)
-#     nome = db.Column(db.String(100))
-#     email = db.Column(db.String(150))
-#     senha = db.Column(db.String(250))
-
 class Usuario(db.Model, UserMixin):
     __tablename__='usuario'
     id = db.Column(db.Integer, primary_key=True)
@@ -46,6 +33,17 @@ class Cuidador(db.Model, UserMixin):
     nome = db.Column(db.String(100))
     email = db.Column(db.String(150), unique=True)
     senha = db.Column(db.String(250))
+
+class PedidoDoacao(db.Model):
+    __tablename__ = 'pedido_doacao'
+    id = db.Column(db.Integer, primary_key=True)
+    item = db.Column(db.String(100), nullable=False)
+    descricao = db.Column(db.String(300), nullable=False)
+    urgencia = db.Column(db.String(20), nullable=False)
+    contato_info = db.Column(db.String(100), nullable=False)
+    usuario_id = db.Column(db.Integer, db.ForeignKey('usuario.id', ondelete='CASCADE'), nullable=False)
+    usuario = db.relationship('Usuario', backref=db.backref('pedidos_doacao', lazy=True))
+
 
 # with app.app_context():
 #   db.drop_all()
@@ -67,30 +65,6 @@ def index():
 @app.route('/login')
 def login():
     return render_template('login.html')
-
-# @app.route('/autenticar', methods=['POST'])
-# def autenticar():
-#     tipo = request.form['tipo']
-#     email = request.form['email']
-#     senha = request.form['senha']
-
-#     if tipo=='0':
-#         us = Usuario.query.filter_by(email=email).first()
-
-#     if tipo=='1':
-#         us = Cuidador.query.filter_by(email=email).first()
-
-#     if(us is None):
-#         flash('Login ou senha incorretos', 'danger')
-#         return redirect(url_for('login'))
-    
-#     if(us.senha == senha):
-#         flash('Logado com sucesso', 'success')
-#         return redirect('/')
-
-#     if(us.senha != senha):
-#         flash('Login ou senha incorretos', 'danger')
-#         return redirect(url_for('login'))
 
 from flask_login import login_user
 
@@ -121,9 +95,28 @@ def logout():
     flash('Você saiu da conta.', 'info')
     return redirect(url_for('login'))
 
-@app.route('/doacoes')
+@app.route('/doacoes', methods=['GET', 'POST'])
+@login_required
 def doacoes():
-     return render_template('doacoes.html')
+    if request.method == 'POST':
+        # Recebe os dados do formulário
+        item = request.form['item']
+        descricao = request.form['description']  # Corrigir nome do campo no formulário
+        urgencia = request.form['urgency']      # Corrigir nome do campo no formulário
+        contato_info = request.form['contact_info']  # Corrigir nome do campo no formulário
+        usuario_id = current_user.id  # Usando o usuário autenticado
+
+        # Cria o pedido de doação no banco de dados
+        pedido = PedidoDoacao(item=item, descricao=descricao, urgencia=urgencia, contato_info=contato_info, usuario_id=usuario_id)
+        db.session.add(pedido)
+        db.session.commit()
+
+        flash('Pedido de doação registrado com sucesso!', 'success')
+
+    # Recupera todos os pedidos de doação do usuário atual
+    pedidos = PedidoDoacao.query.filter_by(usuario_id=current_user.id).all()
+
+    return render_template('doacoes.html', pedidos=pedidos)  # Retorna o template com os pedidos de doação
 
 @app.route('/sobre')
 def sobre():
@@ -166,4 +159,6 @@ def faq():
 def doecas():
     return render_template('doencas.html')
 
+with app.app_context():
+    db.create_all()
 app.run(app)
