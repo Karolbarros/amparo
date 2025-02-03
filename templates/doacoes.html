@@ -32,7 +32,11 @@
             Descrição: {{ pedido.descricao }}<br>
             Urgência: {{ pedido.urgencia }}<br>
             Contato: {{ pedido.contato_info }}<br>
-            <hr>
+            <form action="{{ url_for('deletar_pedido', pedido_id=pedido.id) }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir este pedido?')">
+                    Deletar Pedido
+                </button>
+            </form>
         </li>
     {% endfor %}
 </ul>

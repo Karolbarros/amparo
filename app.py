@@ -118,6 +118,24 @@ def doacoes():
 
     return render_template('doacoes.html', pedidos=pedidos)  # Retorna o template com os pedidos de doação
 
+@app.route('/deletar_pedido/<int:pedido_id>', methods=['POST'])
+@login_required
+def deletar_pedido(pedido_id):
+    # Busca o pedido no banco de dados com o ID fornecido
+    pedido = PedidoDoacao.query.get_or_404(pedido_id)
+
+    # Verifica se o pedido pertence ao usuário autenticado (usuário que está logado)
+    if pedido.usuario_id != current_user.id:
+        flash('Você não tem permissão para excluir este pedido', 'danger')
+        return redirect(url_for('doacoes'))  # Redireciona para a página de doações se não tiver permissão
+
+    # Deleta o pedido do banco de dados
+    db.session.delete(pedido)
+    db.session.commit()
+
+    flash('Pedido de doação deletado com sucesso!', 'success')  # Mensagem de sucesso após deletar o pedido
+    return redirect(url_for('doacoes'))  # Redireciona para a página de doações após a exclusão
+
 @app.route('/sobre')
 def sobre():
     return render_template('sobre.html')
