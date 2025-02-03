@@ -14,7 +14,17 @@
         <img src="/static/img/libelula.png" alt="Libelula Logo">
       </div>
       <div class="forms">
-        <form action="{{url_for('autenticar')}}" method="POST">
+
+        {% set mensagens = get_flashed_messages(with_categories=true) %}
+        {% if mensagens %}
+          {% for cat, m in mensagens %}
+            <div class="alert alert-{{ cat }}">
+              {{ m }}
+            </div>
+          {% endfor %}
+        {% endif %}
+        
+        <form action="{{ url_for('autenticar') }}" method="POST">
           <h1>AMPARO</h1>
           <label for="email" class="form-label">Tipo de usuário: </label>
           <select name="tipo">  
@@ -30,6 +40,5 @@
       </div>
     </div>
   </div>
-  
 </body>
 </html>

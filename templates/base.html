@@ -17,17 +17,23 @@
                 <li><a href="/sobre">Sobre</a></li>
                 <li><a href="#informacoes">Informações</a></li>
                 <li><a href="/doacoes">Doações</a></li>
-                <li><a href="/cadastro">Cadastro</a></li>
-                <li><a href="/login">Entrar</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('logout') }}">Sair</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('cadastro') }}">Cadastro</a></li>
+                    <li><a href="{{ url_for('login') }}">Entrar</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
 
-
     {% set mensagens = get_flashed_messages(with_categories=true) %}
     {% if mensagens %}
         {% for cat, m in mensagens %}
-            <div class="alerta"> {{m}} </div>
+            <div class="alert alert-{{ cat }} alert-dismissible fade show" role="alert">
+                {{ m }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         {% endfor %}
     {% endif %}
 
@@ -35,6 +41,7 @@
         {% block conteudo %}
         {% endblock %}
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <footer>
@@ -47,8 +54,12 @@
                 <li><h5>Lista de páginas</h5></li>
                 <li><a href="/sobre">Sobre</a></li>
                 <li><a href="#">Informações</a></li>
-                <li><a href="#">Entrar</a></li>
-                <li><a href="#">Cadastro</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('logout') }}">Sair</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Entrar</a></li>
+                    <li><a href="{{ url_for('cadastro') }}">Cadastro</a></li>
+                {% endif %}
             </ul>
             <ul>
                 <li><h5>Contate-nos</h5></li>
