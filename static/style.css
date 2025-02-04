@@ -365,11 +365,172 @@ div.text-nosso-objetivo{
     max-width: 578px;
 }
 
+/* /* body.doacoes {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container principal */
+/* .card {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Avatar do usuário */
+/* .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+    display: block;
+    margin: 0 auto 10px;
+} */
+
+/* Título */
+/* h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+} */
+
+/* Labels */
+/* label {
+    display: block;
+    font-weight: bold;
+    text-align: left;
+    margin: 10px 0 5px;
+    color: #333;
+} */ */
+
+/* Campos de entrada */
+/* input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: #e0e0e0;
+    color: #333;
+    margin-bottom: 10px;
+} */
+
+/* Botões de urgência */
+/* .urgencia-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.urgencia-container button {
+    width: 32%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.urgencia-alta {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.urgencia-media {
+    background-color: #f39c12;
+    color: white;
+}
+
+.urgencia-baixa {
+    background-color: #27ae60;
+    color: white;
+}
+
+.urgencia-container button:hover {
+    opacity: 0.8;
+} */
+
+/* Botão de envio */
+/* button[type="submit"] {
+    background-color: #004d40;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #00332a; */
+/* } */
+
+/* Lista de pedidos */
+/* .pedido-lista {
+    list-style: none;
+    padding: 0;
+}
+
+.pedido-item {
+    background-color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.descricao {
+    color: #555;
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+.urgencia {
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.urgencia.alta { color: #e74c3c; }
+.urgencia.media { color: #f39c12; }
+.urgencia.baixa { color: #27ae60; } */
+
+/* Botão de deletar */
+/* .btn-deletar {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.btn-deletar:hover {
+    background-color: #c9302c;
+}
+ */
+
+ /* */ 
+
 @media (max-width: 768px) {
-    header {
+    header{
         flex-direction: column;
-        align-items: flex-start;
-    }
+        align-items: flex-start;}
 
     .nav ul {
         flex-direction: column;

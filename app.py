@@ -99,42 +99,44 @@ def logout():
 @login_required
 def doacoes():
     if request.method == 'POST':
-        # Recebe os dados do formulário
+       
         item = request.form['item']
-        descricao = request.form['description']  # Corrigir nome do campo no formulário
-        urgencia = request.form['urgency']      # Corrigir nome do campo no formulário
-        contato_info = request.form['contact_info']  # Corrigir nome do campo no formulário
-        usuario_id = current_user.id  # Usando o usuário autenticado
+        descricao = request.form['description'] 
+        urgencia = request.form['urgency']     
+        contato_info = request.form['contact_info'] 
+        usuario_id = current_user.id  
 
-        # Cria o pedido de doação no banco de dados
+      
         pedido = PedidoDoacao(item=item, descricao=descricao, urgencia=urgencia, contato_info=contato_info, usuario_id=usuario_id)
         db.session.add(pedido)
         db.session.commit()
 
         flash('Pedido de doação registrado com sucesso!', 'success')
 
-    # Recupera todos os pedidos de doação do usuário atual
+   
     pedidos = PedidoDoacao.query.filter_by(usuario_id=current_user.id).all()
 
-    return render_template('doacoes.html', pedidos=pedidos)  # Retorna o template com os pedidos de doação
+    return render_template('doacoes.html', pedidos=pedidos) 
+
+
 
 @app.route('/deletar_pedido/<int:pedido_id>', methods=['POST'])
 @login_required
 def deletar_pedido(pedido_id):
-    # Busca o pedido no banco de dados com o ID fornecido
+    
     pedido = PedidoDoacao.query.get_or_404(pedido_id)
 
-    # Verifica se o pedido pertence ao usuário autenticado (usuário que está logado)
+   
     if pedido.usuario_id != current_user.id:
         flash('Você não tem permissão para excluir este pedido', 'danger')
-        return redirect(url_for('doacoes'))  # Redireciona para a página de doações se não tiver permissão
-
-    # Deleta o pedido do banco de dados
+        return redirect(url_for('doacoes'))  
+    
     db.session.delete(pedido)
     db.session.commit()
 
-    flash('Pedido de doação deletado com sucesso!', 'success')  # Mensagem de sucesso após deletar o pedido
-    return redirect(url_for('doacoes'))  # Redireciona para a página de doações após a exclusão
+    flash('Pedido de doação deletado com sucesso!', 'success')  
+    return redirect(url_for('doacoes'))  
+
 
 @app.route('/sobre')
 def sobre():
@@ -176,6 +178,14 @@ def faq():
 @app.route('/doencas')
 def doecas():
     return render_template('doencas.html')
+
+@app.route('/doacoes_disponiveis')
+def doacoes_disponiveis():
+    pedidos = PedidoDoacao.query.all()  
+    return render_template('doacoes_disponiveis.html', pedidos=pedidos)
+
+with app.app_context():
+    db.create_all()
 
 with app.app_context():
     db.create_all()

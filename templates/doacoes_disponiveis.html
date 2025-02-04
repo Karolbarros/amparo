@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doações Disponíveis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <h2 class="titulo">DOAÇÕES DISPONÍVEIS</h2>
+    <div class="grid-container">
+        {% for i in range(0, pedidos|length, 2) %}
+        <div class="linha-doacao">
+            <div class="doacao">
+                <div class="avatar"></div>
+                <span class="nome">{{ pedidos[i].usuario.nome }}</span>
+                <div class="descricao">
+                    <p><strong>Item:</strong> {{ pedidos[i].item }}</p>
+                    <p><strong>Urgência:</strong> {{ pedidos[i].urgencia }}</p>
+                    <p><strong>Descrição:</strong> {{ pedidos[i].descricao }}</p>
+                    <p><strong>Contato:</strong> {{ pedidos[i].contato_info }}</p>
+                </div>
+            </div>
+
+            {% if i+1 < pedidos|length %}
+            <div class="doacao">
+                <div class="avatar"></div>
+                <span class="nome">{{ pedidos[i+1].usuario.nome }}</span>
+                <div class="descricao">
+                    <p><strong>Item:</strong> {{ pedidos[i+1].item }}</p>
+                    <p><strong>Urgência:</strong> {{ pedidos[i+1].urgencia }}</p>
+                    <p><strong>Descrição:</strong> {{ pedidos[i+1].descricao }}</p>
+                    <p><strong>Contato:</strong> {{ pedidos[i+1].contato_info }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

@@ -1,67 +1,53 @@
 {% extends 'base.html' %}
 
 {% block conteudo %}
-<h2>Registrar Pedido de Doação</h2>
+<div class="container">
+    <div class="card">
+        <h2>Registrar Pedido de Doação</h2>
+        
+        <form method="POST" class="formulario">
+            <label for="item">Item necessário:</label>
+            <input type="text" id="item" name="item" placeholder="Ex: Medicamento, fralda, dinheiro" required>
+
+            <label for="urgency">Urgência:</label>
+            <div class="urgency-options">
+                <input type="radio" id="alta" name="urgency" value="alta" required>
+                <label for="alta" class="urgency-btn alta">ALTA</label>
+
+                <input type="radio" id="media" name="urgency" value="media" required>
+                <label for="media" class="urgency-btn media">MÉDIA</label>
+
+                <input type="radio" id="baixa" name="urgency" value="baixa" required>
+                <label for="baixa" class="urgency-btn baixa">BAIXA</label>
+            </div>
+
+            <label for="description">Descrição do pedido:</label>
+            <textarea id="description" name="description" placeholder="Detalhe a necessidade e como a doação ajudará" required></textarea>
+
+            <label for="contact_info">Contato:</label>
+            <input type="text" id="contact_info" name="contact_info" placeholder="Seu telefone ou email" required>
+
+            <button type="submit" class="btn-registrar">Registrar Solicitação</button>
+        </form>
+    </div>
     
-<!-- Formulário de pedido de doação -->
-<form method="POST">
-    <label for="item">Item necessário:</label>
-    <input type="text" id="item" name="item" placeholder="Ex: Medicamento, alimentação" required><br>
-
-    <label for="description">Descrição do pedido:</label>
-    <textarea id="description" name="description" placeholder="Detalhe a necessidade e como a doação ajudará" required></textarea><br>
-
-    <label for="urgency">Urgência:</label>
-    <select id="urgency" name="urgency" required>
-        <option value="alta">Alta</option>
-        <option value="media">Média</option>
-        <option value="baixa">Baixa</option>
-    </select><br>
-
-    <label for="contact_info">Informações de contato:</label>
-    <input type="text" id="contact_info" name="contact_info" placeholder="Ex: Telefone, email" required><br>
-
-    <button type="submit">Registrar Pedido</button>
-</form>
-
-<h2>Meus Pedidos de Doação</h2>
-<ul>
-    {% for pedido in pedidos %}
-        <li>
-            <strong>{{ pedido.item }}</strong><br>
-            Descrição: {{ pedido.descricao }}<br>
-            Urgência: {{ pedido.urgencia }}<br>
-            Contato: {{ pedido.contato_info }}<br>
-            <form action="{{ url_for('deletar_pedido', pedido_id=pedido.id) }}" method="POST" style="display:inline;">
-                <button type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir este pedido?')">
-                    Deletar Pedido
-                </button>
-            </form>
-        </li>
-    {% endfor %}
-</ul>
-
-<h2>Páginas de Doações para Doenças Crônicas no Brasil</h2>
-<div class="resource-section">
-    <h2>Organizações e Iniciativas</h2>
-    <p>Abaixo estão algumas organizações que aceitam doações para apoiar pessoas com doenças crônicas:</p>
-    <ul>
-        <li><a href="https://www.abcd.org.br/" target="_blank">ABCD - Associação Brasileira de Diabetes</a></li>
-        <li><a href="https://www.fundacaocancer.org.br/" target="_blank">Fundação do Câncer</a></li>
-        <li><a href="https://www.abrale.org.br/" target="_blank">ABRALE - Associação Brasileira de Linfoma e Leucemia</a></li>
-        <li><a href="https://www.abrace.org.br/" target="_blank">ABRACE - Associação Brasileira de Assistência ao Câncer</a></li>
-        <li><a href="https://www.fundacaoabrigo.org.br/" target="_blank">Fundação Abrigo</a></li>
-    </ul>
-</div>
-
-<div class="resource-section">
-    <h2>Como Contribuir</h2>
-    <p>Além de doações financeiras, você pode ajudar de outras maneiras:</p>
-    <ul>
-        <li><a href="https://www.voluntariar.org.br/" target="_blank">Voluntariado</a></li>
-        <li><a href="https://www.doacoes.org.br/" target="_blank">Plataforma de Doações</a></li>
-        <li><a href="https://www.campanhasolidaria.org.br/" target="_blank">Campanhas Solidárias</a></li>
-    </ul>
-</div>
+{% if pedidos %}
+    <div class="card">
+        <h2>Meus Pedidos de Doação</h2>
+        <ul class="pedido-lista">
+            {% for pedido in pedidos %}
+                <li class="pedido-item">
+                    <strong>{{ pedido.item }}</strong><br>
+                    <span class="descricao">{{ pedido.descricao }}</span><br>
+                    <span class="urgencia {{ pedido.urgencia }}">{{ pedido.urgencia.capitalize() }}</span><br>
+                    <span class="contato">Contato: {{ pedido.contato_info }}</span><br>
+                    <form action="{{ url_for('deletar_pedido', pedido_id=pedido.id) }}" method="POST">
+                        <button type="submit" class="btn-deletar" onclick="return confirm('Tem certeza que deseja excluir este pedido?')">Deletar</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
 
 {% endblock %}
