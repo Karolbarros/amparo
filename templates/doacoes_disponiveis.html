@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doações Disponíveis</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
+{% extends 'base.html' %}
+
+{% block conteudo %}
 <body>
 
     <h2 class="titulo">DOAÇÕES DISPONÍVEIS</h2>
@@ -39,5 +34,7 @@
         {% endfor %}
     </div>
 
+    
+
 </body>
-</html>
+{% endblock %}
