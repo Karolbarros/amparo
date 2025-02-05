@@ -358,6 +358,216 @@ div.text-nosso-objetivo{
     max-width: 578px;
 }
 
+/* doação */
+.card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+input[type="text"],
+textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: #aaa;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+.urgency-options {
+    display: flex;
+    gap: 10px;
+}
+
+.urgency-btn {
+    display: block;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: white;
+    background-color: #888;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.urgency-btn:hover {
+    background-color: #666;
+}
+
+.urgency-btn.alta {
+    background-color: #e63946;
+}
+
+.urgency-btn.media {
+    background-color: #f4a261;
+}
+
+.urgency-btn.baixa {
+    background-color: #2a9d8f;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + .urgency-btn {
+    box-shadow: 0 0 0 3px #333;
+}
+
+/* Botão de registrar */
+.btn-registrar {
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.btn-registrar:hover {
+    background-color: #21867a;
+    transform: scale(1.03);
+}
+
+.card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+h2 {
+    font-size: 1.5rem;
+    text-align: left;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.pedido-lista {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pedido-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.pedido-item strong {
+    font-size: 1rem;
+    color: #333;
+}
+
+.descricao {
+    display: block;
+    margin: 5px 0;
+    color: #555;
+}
+
+.urgencia {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.urgencia.alta {
+    background-color: #e63946;
+}
+
+.urgencia.media {
+    background-color: #f4a261;
+}
+
+.urgencia.baixa {
+    background-color: #2a9d8f;
+}
+
+.contato {
+    display: block;
+    margin-top: 5px;
+    color: #555;
+    font-style: italic;
+}
+
+.btn-deletar {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.btn-deletar:hover {
+    background-color: #c12836;
+    transform: scale(1.05);
+}
+
+.card > div {
+    flex: 1;
+}
+
+.card > div:first-child {
+    border-right: 2px solid #ccc;
+    padding-right: 20px;
+}
+
+
+
 @media (max-width: 768px) {
     header{
         flex-direction: column;
