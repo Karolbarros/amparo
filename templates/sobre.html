@@ -27,6 +27,43 @@
             </p>
         </div>
     </section>
+
+    <div class="faq">
+        <main class="faq-container">
+            <div class="faq-title">
+                <h1>PERGUNTAS FREQUENTES</h1>
+                <p><a href="faq.html">Ver mais FAQ's -></a></p>
+            </div>
+    
+            <div class="faq-content">
+                <div class="faq-item">
+                    <h2>O que é este site? <span>+</span></h2>
+                    <p>Este site é uma plataforma de apoio para pessoas que vivem com doenças crônicas, oferecendo informações, recursos e uma comunidade de suporte.</p>
+                </div>
+    
+                <div class="faq-item">
+                    <h2>Quem pode usar este site? <span>+</span></h2>
+                    <p>O site pode ser usado por pessoas com doenças crônicas, seus familiares e profissionais de saúde que desejam oferecer ou buscar suporte.</p>
+                </div>
+    
+                <div class="faq-item">
+                    <h2>O uso do site é gratuito? <span>+</span></h2>
+                    <p>Sim, o site é totalmente gratuito para todos os usuários.</p>
+                </div>
+            </div>
+        </main>
+    
+        <script>
+            document.querySelectorAll('.faq-item h2').forEach(item => {
+                item.addEventListener('click', () => {
+                    const paragraph = item.nextElementSibling;
+                    const isVisible = paragraph.style.display === 'block';
+    
+                    paragraph.style.display = isVisible ? 'none' : 'block';
+                    item.querySelector('span').textContent = isVisible ? '+' : '-';
+                });
+            });
+        </script>
 </body>
 
 {% endblock %}
