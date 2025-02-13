@@ -30,6 +30,11 @@
                    <input class="form-control id="senha"  type="password" name="senha" placeholder="Senha">
                 
                    <button class="botaocadlog" type="submit">Cadastrar</button>
+                    {% with messages = get_flashed_messages(category_filter=["erro_senha"]) %}
+                      {% if messages %}
+                      <div class="mensagem-erro">{{ messages[0] }}</div>
+                      {% endif %}
+                    {% endwith %}
                 </form>
           </div>
           <div class="image-section">

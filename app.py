@@ -5,7 +5,8 @@ import json, os
 from flask_login import LoginManager
 from flask_login import UserMixin, login_user, logout_user, login_required
 from flask_login import current_user
-
+from werkzeug.security import generate_password_hash, check_password_hash
+import re
 
 login_manager = LoginManager()
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -58,6 +59,14 @@ class PedidoDoacao(db.Model):
 def load_user(user_id):
     return Usuario.query.get(int(user_id)) or Cuidador.query.get(int(user_id))
 
+def validar_senha(senha):
+    if len(senha) < 6:
+        return "A senha deve ter pelo menos 6 caracteres."
+    if not re.search(r"\d", senha):
+        return "A senha deve conter pelo menos um número."
+    return None
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -99,7 +108,6 @@ def logout():
 @login_required
 def doacoes():
     if request.method == 'POST':
-       
         item = request.form['item']
         descricao = request.form['description'] 
         urgencia = request.form['urgency']     
@@ -112,7 +120,6 @@ def doacoes():
         db.session.commit()
 
         flash('Pedido de doação registrado com sucesso!', 'success')
-
    
     pedidos = PedidoDoacao.query.filter_by(usuario_id=current_user.id).all()
 
@@ -153,7 +160,19 @@ def cadastro():
         nome = request.form['nome']
         email = request.form['email']
         senha = request.form['senha'] 
+
+        # Validação da senha
+        erro_senha = validar_senha(senha)
+        if erro_senha:
+            flash(erro_senha, 'erro_senha')  # Categoria específica para senha
+            return redirect(url_for('cadastro'))
+
+        if Usuario.query.filter_by(email=email).first() or Cuidador.query.filter_by(email=email).first():
+            flash('E-mail já cadastrado!', 'danger')
+            return redirect(url_for('cadastro'))
         
+
+
         if tipo=='0':
             usuario = Usuario(nome = nome, email = email, senha = senha)
             db.session.add(usuario)

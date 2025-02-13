@@ -633,6 +633,12 @@ h2 {
     color: #000;
 }
 
+.mensagem-erro {
+    color: #d9534f;  /* Vermelho Bootstrap para erros */
+    font-size: 14px; /* Texto menor */
+    margin-top: 5px; /* Pequeno espaçamento acima */
+}
+
 @media (max-width: 768px) {
     header{
         flex-direction: column;
