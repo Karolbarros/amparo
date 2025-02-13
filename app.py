@@ -196,8 +196,39 @@ def cadastro():
 def faq():
     return render_template('faq.html')
 
+@app.route('/perfil')
+@login_required
+def perfil():
+    return render_template('perfil.html', usuario=current_user)
 
-with app.app_context():
-    db.create_all()
+# Rota para editar o perfil
+@app.route('/editar_perfil', methods=['GET', 'POST'])
+@login_required
+def editar_perfil():
+    usuario = current_user
+
+    if request.method == 'POST':
+        # Aqui você processa os dados do formulário de edição, como nome, email, etc.
+        usuario.nome = request.form['nome']
+        usuario.email = request.form['email']
+        db.session.commit()  # Salva as mudanças no banco de dados
+        flash('Perfil atualizado com sucesso!', 'success')
+        return redirect(url_for('perfil'))  # Redireciona para a página de perfil
+
+    return render_template('editar_perfil.html', usuario=usuario)
+
+# Rota para deletar a conta
+@app.route('/deletar_conta', methods=['POST'])
+@login_required
+def deletar_conta():
+    usuario = current_user
+
+    # Deleta o usuário atual da base de dados
+    db.session.delete(usuario)
+    db.session.commit()  # Confirma a remoção do usuário
+    flash('Conta deletada com sucesso!', 'success')
+
+    # Redireciona para a página inicial ou de login
+    return redirect(url_for('index'))
 
 app.run(debug=True)
