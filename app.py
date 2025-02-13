@@ -1,10 +1,8 @@
-from flask import Flask, render_template, flash, Response, redirect, request, url_for, session 
-import sqlite3
+from flask import Flask, render_template, flash, redirect, request, url_for, session 
 from flask_sqlalchemy import SQLAlchemy
-import json, os
+import os
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from functools import wraps
-
 
 login_manager = LoginManager()
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -92,15 +90,28 @@ def cuidador_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+def paciente_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not isinstance(current_user, Usuario):  
+            flash("Acesso negado. Apenas pacientes podem acessar esta página.", "danger")
+            return redirect(url_for("index"))
+        return f(*args, **kwargs)
+    return decorated_function
+
 @app.route('/doacoes', methods=['GET', 'POST'])
 @login_required
 def doacoes():
+    if isinstance(current_user, Cuidador): 
+        flash("Apenas pacientes podem fazer pedidos de doações.", "danger")
+        return redirect(url_for('doacoes_disponiveis')) 
+
     if request.method == 'POST':
         item = request.form['item']
         descricao = request.form['description']
         urgencia = request.form['urgency']
         contato_info = request.form['contact_info']
-        usuario_id = current_user.id
+        usuario_id = current_user.id 
 
         pedido = PedidoDoacao(item=item, descricao=descricao, urgencia=urgencia, contato_info=contato_info, usuario_id=usuario_id)
         db.session.add(pedido)
@@ -108,8 +119,20 @@ def doacoes():
 
         flash('Pedido de doação registrado com sucesso!', 'success')
 
-    pedidos = PedidoDoacao.query.all()
+    pedidos = PedidoDoacao.query.filter_by(usuario_id=current_user.id).all()
     return render_template('doacoes.html', pedidos=pedidos)
+
+@app.route('/doacoes_disponiveis')
+@login_required
+def doacoes_disponiveis():
+    if isinstance(current_user, Usuario): 
+        flash("Acesso negado. Apenas cuidadores podem acessar esta página.", "danger")
+        return redirect(url_for("index")) 
+    
+    else:
+        pedidos = PedidoDoacao.query.all()  
+        return render_template('doacoes_disponiveis.html', pedidos=pedidos)
+
 
 @app.route('/deletar_pedido/<int:pedido_id>', methods=['POST'])
 @login_required
@@ -165,13 +188,6 @@ def faq():
 @app.route('/doencas')
 def doecas():
     return render_template('doencas.html')
-
-@app.route('/doacoes_disponiveis')
-@login_required
-@cuidador_required
-def doacoes_disponiveis():
-    pedidos = PedidoDoacao.query.all()
-    return render_template('doacoes_disponiveis.html', pedidos=pedidos)
 
 with app.app_context():
     db.create_all()
