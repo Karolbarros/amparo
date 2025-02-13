@@ -78,7 +78,7 @@ def autenticar():
 def logout():
     logout_user()
     flash('Você saiu da conta.', 'info')
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 
 def cuidador_required(f):
