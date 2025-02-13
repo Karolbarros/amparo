@@ -177,17 +177,10 @@ def cadastro():
         flash('Cadastrado com sucesso', 'success')
         return redirect(url_for('login'))
 
-@app.route('/contato')
-def contato():
-    return render_template('contato.html')
-
 @app.route('/faq')
 def faq():
     return render_template('faq.html')
 
-@app.route('/doencas')
-def doecas():
-    return render_template('doencas.html')
 
 with app.app_context():
     db.create_all()

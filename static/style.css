@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&family=Sora:wght@100..800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 * {
     font-family: "Sora", sans-serif;
     margin: 0;
@@ -26,7 +26,7 @@ header {
 }
 
 .logo a, h3 {
-    font-family: "Itim", sans-serif;
+    font-family: "Tinos", sans-serif;
     font-size: 2.25rem;
     text-decoration: none;
     color: #fff;

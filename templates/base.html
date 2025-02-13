@@ -15,12 +15,10 @@
         <nav class="nav">
             <ul>
                 <li><a href="/sobre">Sobre</a></li>
-                <li><a href="#informacoes">Informações</a></li>
                 <li><a href="/doacoes">Doações</a></li>
                 {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('logout') }}">Sair</a></li>
                 {% else %}
-                    <li><a href="{{ url_for('cadastro') }}">Cadastro</a></li>
                     <li><a href="{{ url_for('login') }}">Entrar</a></li>
                 {% endif %}
             </ul>
