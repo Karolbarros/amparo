@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from functools import wraps
+import re
 
 login_manager = LoginManager()
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -153,6 +154,13 @@ def deletar_pedido(pedido_id):
 def sobre():
     return render_template('sobre.html')
 
+def validar_senha(senha):
+    if len(senha) < 6:
+        return "A senha deve ter pelo menos 6 caracteres."
+    if not re.search(r"\d", senha):
+        return "A senha deve conter pelo menos um número."
+    return None
+
 @app.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
     if request.method == 'GET':
@@ -163,6 +171,13 @@ def cadastro():
         nome = request.form['nome']
         email = request.form['email']
         senha = request.form['senha']
+
+        erro_senha = validar_senha(senha)
+        if erro_senha:
+            flash(erro_senha, 'erro_senha')  # Categoria específica para senha
+            return redirect(url_for('cadastro'))
+
+
 
         if tipo=='0':
             usuario = Usuario(nome=nome, email=email, senha=senha)
