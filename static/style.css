@@ -665,3 +665,44 @@ h2 {
     }
 }
 
+.perfil{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.perfil .container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    height: 400px;
+    background: #f0f0f0;
+    border-radius: 25px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+
+.nome{
+    font-size: 42px;
+}
+
+.foto-perfil {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info-perfil{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+a#editarperfil{
+    width: 138.78px;
+}
