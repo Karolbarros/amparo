@@ -5,12 +5,14 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 from functools import wraps
 import re
 
+
 login_manager = LoginManager()
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "amparo1004"
 login_manager.init_app(app)
 login_manager.login_view = "index"
+
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(BASE_DIR, 'database.db')}"
@@ -201,34 +203,51 @@ def faq():
 def perfil():
     return render_template('perfil.html', usuario=current_user)
 
-# Rota para editar o perfil
 @app.route('/editar_perfil', methods=['GET', 'POST'])
 @login_required
 def editar_perfil():
-    usuario = current_user
-
     if request.method == 'POST':
-        # Aqui você processa os dados do formulário de edição, como nome, email, etc.
-        usuario.nome = request.form['nome']
-        usuario.email = request.form['email']
-        db.session.commit()  # Salva as mudanças no banco de dados
+        nome = request.form['nome']
+        email = request.form['email']
+        senha_atual = request.form['senha_atual']
+        nova_senha = request.form['nova_senha']
+        confirmar_senha = request.form['confirmar_senha']
+
+        usuario = current_user
+
+        # Verificando se a senha atual está correta comparando com o texto simples
+        if usuario.senha != senha_atual:  # Compara diretamente as senhas em texto simples
+            flash('Senha atual incorreta. Tente novamente.', 'danger')
+            return redirect(url_for('editar_perfil'))
+
+        # Se nova senha for fornecida e confirmar_senha corresponder
+        if nova_senha and nova_senha == confirmar_senha:
+            usuario.senha = nova_senha  # Armazena a nova senha diretamente em texto simples
+        elif nova_senha:
+            flash('As senhas não coincidem. Tente novamente.', 'danger')
+            return redirect(url_for('editar_perfil'))
+
+        # Atualizando nome e email
+        usuario.nome = nome
+        usuario.email = email
+
+        # Commitando as alterações no banco de dados
+        db.session.commit()
+
         flash('Perfil atualizado com sucesso!', 'success')
-        return redirect(url_for('perfil'))  # Redireciona para a página de perfil
 
-    return render_template('editar_perfil.html', usuario=usuario)
+    return render_template('editar_perfil.html', usuario=current_user)
 
-# Rota para deletar a conta
+
 @app.route('/deletar_conta', methods=['POST'])
 @login_required
 def deletar_conta():
     usuario = current_user
 
-    # Deleta o usuário atual da base de dados
+ 
     db.session.delete(usuario)
-    db.session.commit()  # Confirma a remoção do usuário
+    db.session.commit() 
     flash('Conta deletada com sucesso!', 'success')
-
-    # Redireciona para a página inicial ou de login
     return redirect(url_for('index'))
 
 app.run(debug=True)

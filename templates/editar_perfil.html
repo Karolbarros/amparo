@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<body>
+    <h1>Editar Perfil</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="alert-container">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<form method="POST">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="nome" name="nome" value="{{ usuario.nome }}" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value="{{ usuario.email }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="senha_atual">Senha Atual</label>
+        <input type="password" class="form-control" id="senha_atual" name="senha_atual" required>
+    </div>
+
+    <div class="form-group">
+        <label for="nova_senha">Nova Senha</label>
+        <input type="password" class="form-control" id="nova_senha" name="nova_senha">
+    </div>
+
+    <div class="form-group">
+        <label for="confirmar_senha">Confirmar Nova Senha</label>
+        <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Atualizar Perfil</button>
+</form>
+    <a href="{{ url_for('index') }}">Voltar ao Dashboard</a>
+</body>
+
+{% endblock %}
