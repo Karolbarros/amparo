@@ -152,6 +152,30 @@ def deletar_pedido(pedido_id):
     flash('Pedido de doação deletado com sucesso!', 'success')
     return redirect(url_for('doacoes'))
 
+@app.route('/editar_pedido/<int:pedido_id>', methods=['GET', 'POST'])
+@login_required
+def editar_pedido(pedido_id):
+    pedido = PedidoDoacao.query.get_or_404(pedido_id)
+
+    # Verifica se o pedido pertence ao usuário logado
+    if pedido.usuario_id != current_user.id:
+        flash('Você não tem permissão para editar este pedido.', 'danger')
+        return redirect(url_for('doacoes'))
+
+    if request.method == 'POST':
+        pedido.item = request.form['item']
+        pedido.descricao = request.form['description']
+        pedido.urgencia = request.form['urgency']
+        pedido.contato_info = request.form['contact_info']
+
+        db.session.commit()
+
+        flash('Pedido de doação atualizado com sucesso!', 'success')
+        return redirect(url_for('doacoes'))
+
+    return render_template('editar_pedido.html', pedido=pedido)
+
+
 @app.route('/sobre')
 def sobre():
     return render_template('sobre.html')

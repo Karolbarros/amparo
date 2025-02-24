@@ -3,6 +3,7 @@
 {% block conteudo %}
 <div class="container">
     <div class="card">
+
         <h2>Registrar Solicitação de Doação</h2>
         
         <form method="POST" class="formulario">
@@ -41,6 +42,11 @@
                     <span class="descricao">{{ pedido.descricao }}</span><br>
                     <span class="urgencia {{ pedido.urgencia }}">{{ pedido.urgencia.capitalize() }}</span><br>
                     <span class="contato">Contato: {{ pedido.contato_info }}</span><br>
+                    
+                    <form action="{{ url_for('editar_pedido', pedido_id=pedido.id) }}" method="GET" style="display:inline;">
+                        <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                    </form>
+
                     <form action="{{ url_for('deletar_pedido', pedido_id=pedido.id) }}" method="POST">
                         <button type="submit" class="btn-deletar" onclick="return confirm('Tem certeza que deseja excluir este pedido?')">Deletar</button>
                     </form>
