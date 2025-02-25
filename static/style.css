@@ -311,6 +311,7 @@ section.rede-apoio h2 {
     font-size: 28px;
     margin-bottom: 20px;
     text-align: center;
+    color: #fff;
 }
 
 section.rede-apoio p {
@@ -666,6 +667,10 @@ h2 {
         margin-bottom: 20px;
     }
 }
+h1{
+    font-family: "Tinos", sans-serif;
+    font-weight: 800;
+}
 
 .perfil{
     display: flex;
@@ -712,17 +717,20 @@ a#editarperfil{
 .editar-perfil, .editar-pedido{
     display: flex;
     justify-content: center;
+    background: linear-gradient(135deg, #004d73, #1db76b);
 }
 
 .form-edit-doacao, .form-edit-perfil{
-    background: #f0f0f0;
-    width: 50%;
+    background: #fff;
+    width: 406px;
     padding: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    height: 650px; 
+    height: 700px;
+    margin: 126px;
+    border-radius: 25px;
 }
 
 .form-group{
@@ -733,7 +741,7 @@ a#editarperfil{
     font-size: 35px;
 }
 
-form#editperfil{
+form#edit{
     display: flex;
     align-items: center;
 }
@@ -745,4 +753,12 @@ form#editperfil{
 #voltar{
     margin-top: 20px;
     width: 300px;
+}
+
+.form-edit-perfil-box{
+    width: 350px;
+}
+
+#botaoatualizarperfil{
+    width: 350px;
 }

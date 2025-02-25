@@ -10,8 +10,8 @@
 <body>
     <section class="editar-perfil">
         <div class="form-edit-perfil">
-            <h1>Editar Perfil</h1>
-            <form method="POST" class="formulario" id="editperfil">
+            <h1>EDITAR PERFIL</h1>
+            <form method="POST" class="formulario" id="edit">
                 <div class="form-group">
                     <label for="nome">Nome</label>
                     <input type="text" class="form-control sem-margin" id="nome" name="nome" value="{{ usuario.nome }}" required>
@@ -37,7 +37,7 @@
                     <input type="password" class="form-control sem-margin" id="confirmar_senha" name="confirmar_senha">
                 </div>
         
-                <button type="submit" class="btn btn-primary">Atualizar Perfil</button>
+                <button type="submit" class="btn-registrar" id="botaoatualizarperfil">Atualizar Perfil</button>
             </form>
         
             <a href="{{ url_for('index') }}" class="btn btn-secondary" id="voltar">Voltar ao Dashboard</a>

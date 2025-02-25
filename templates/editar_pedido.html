@@ -10,10 +10,10 @@
 <body>
     <section class="editar-pedido">
         <div class="form-edit-doacao">
-            <h1>Editar Pedido de Doação</h1>
-            <form method="POST" class="formulario">
+            <h1>EDITAR PEDIDO DE DOAÇÃO</h1>
+            <form method="POST" class="formulario" id="edit">
                 <label for="item">Item necessário:</label>
-                <input type="text" id="item" name="item" placeholder="Ex: Medicamento, fralda, dinheiro" value="{{ pedido.item }}" required>
+                <input type="text" class="form-edit-perfil-box" id="item" name="item" placeholder="Ex: Medicamento, fralda, dinheiro" value="{{ pedido.item }}" required>
         
                 <label for="urgency">Urgência:</label>
                 <div class="urgency-options">
@@ -28,12 +28,12 @@
                 </div>
         
                 <label for="description">Descrição do pedido:</label>
-                <textarea id="description" name="description" placeholder="Detalhe a necessidade e como a doação ajudará" required>{{ pedido.descricao }}</textarea>
+                <textarea class="form-edit-perfil-box" id="description" name="description" placeholder="Detalhe a necessidade e como a doação ajudará" required>{{ pedido.descricao }}</textarea>
         
                 <label for="contact_info">Contato:</label>
-                <input type="text" id="contact_info" name="contact_info" placeholder="Seu telefone ou email" value="{{ pedido.contato_info }}" required>
+                <input class="form-edit-perfil-box" type="text" id="contact_info" name="contact_info" placeholder="Seu telefone ou email" value="{{ pedido.contato_info }}" required>
         
-                <button type="submit" class="btn-registrar">Atualizar Pedido</button>
+                <button type="submit" class="btn-registrar form-edit-perfil-box">Atualizar Pedido</button>
             </form>
             <a href="{{ url_for('doacoes') }}" class="btn btn-secondary" id="voltar">Voltar</a>
         </div>    
