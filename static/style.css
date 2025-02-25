@@ -152,10 +152,6 @@ body.forms{
     background-color: #14141F;
 }
 
-div.cadastro{
-    
-}
-
 .content-image{
     width: 31.25rem;
     height: 20.875rem;
@@ -415,7 +411,7 @@ input[type="radio"]:checked + .urgency-btn {
     transform: scale(1.03);
 }
 
-.formulario {
+.formulario{
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -711,4 +707,42 @@ h2 {
 
 a#editarperfil{
     width: 138.78px;
+}
+
+.editar-perfil, .editar-pedido{
+    display: flex;
+    justify-content: center;
+}
+
+.form-edit-doacao, .form-edit-perfil{
+    background: #f0f0f0;
+    width: 50%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 650px; 
+}
+
+.form-group{
+    width: 350px;
+}
+
+.form-edit-doacao h1, .form-edit-perfil h1{
+    font-size: 35px;
+}
+
+form#editperfil{
+    display: flex;
+    align-items: center;
+}
+
+.sem-margin{
+    margin-bottom: 0;
+}
+
+#voltar{
+    margin-top: 20px;
+    width: 300px;
 }
