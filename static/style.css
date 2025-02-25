@@ -360,71 +360,18 @@ div.text-nosso-objetivo{
 
 
 /* doação */
-.card {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
-}
 
-.card h2 {
-    font-size: 1.5rem;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-
-.formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-label {
-    font-weight: bold;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-input[type="text"],
-textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    color: #333;
-}
-
-input[type="text"]::placeholder,
-textarea::placeholder {
-    color: #aaa;
-}
-
-textarea {
-    resize: none;
-    height: 80px;
-}
-
-.urgency-options {
-    display: flex;
-    gap: 10px;
-}
-
+/* botoes */
 .urgency-btn {
-    display: block;
     text-align: center;
     padding: 10px 15px;
+    margin-right: 10px;
     border-radius: 8px;
     font-size: 0.9rem;
     cursor: pointer;
     color: white;
     background-color: #888;
     border: none;
-    transition: background-color 0.3s ease;
 }
 
 .urgency-btn:hover {
@@ -468,27 +415,73 @@ input[type="radio"]:checked + .urgency-btn {
     transform: scale(1.03);
 }
 
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+input[type="text"],
+textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: #aaa;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+.container-doacoes {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 31.25rem; 
+    flex-direction: row;
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+}
 .card {
     background-color: #f9f9f9;
+    width: 25rem;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
-    display: flex;
+    max-width: 31.25rem;
+    margin: 20px ;
     gap: 20px;
-    justify-content: space-between;
+    
 }
 
 h2 {
+    font-family: "Tinos", sans-serif;
     font-size: 1.5rem;
-    text-align: left;
+    text-align: center;
     margin-bottom: 20px;
     color: #333;
 }
 
-.pedido-lista {
+.pedido-lista { 
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 31.25rem;
+    max-height: 31.25rem;
+    overflow-y: auto;
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -551,6 +544,17 @@ h2 {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s;
+}
+.btn-warning {
+    background: linear-gradient(90deg, #106B55 0%, #092E41 100%);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin-bottom: 10px;
 }
 
 .btn-deletar:hover {
@@ -638,6 +642,8 @@ h2 {
     font-size: 14px; /* Texto menor */
     margin-top: 5px; /* Pequeno espaçamento acima */
 }
+
+
 
 @media (max-width: 768px) {
     header{
